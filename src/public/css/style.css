@@ -1,0 +1,46 @@
+body{
+    background-color: antiquewhite ;
+}
+table{
+    border: 2px solid black;
+    background-color: black;
+}
+tr{
+    border: 2px solid black;
+    background-color: antiquewhite;
+}
+td{
+    width: 80px;
+    height: 30px;
+}
+th{
+    font-size: 25px;
+    padding: 10px;
+}
+form{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+label{
+    margin-top: 10px;
+}
+button{
+    margin: auto;
+    margin-top: 12px ;
+    width: 150px;
+}
+.contenedor-form{
+    margin-top: 20px;
+    padding: 10px;
+    border: 5px solid black;
+    width: 300px;
+}
+
+.imagen-product{
+    width: 150px;
+}
+
+.imagen-list{
+    width: 50px;
+}
