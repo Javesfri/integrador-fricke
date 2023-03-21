@@ -2,15 +2,15 @@ import mongoose from "mongoose";
 
 export class ManagerMongoDB {
 
-    #url
-    constructor(url,model) {
-        this.#url = url //Atributo privado
+
+    constructor(model) {
+ //Atributo privado
         this.model = model
     }
     
 
 
-    async #setConnection() {
+   /* async #setConnection() {
         try {
             await mongoose.connect(this.#url)
             console.log("DB is connected")
@@ -18,7 +18,7 @@ export class ManagerMongoDB {
         } catch (error) {
             return error
         }
-    }
+    }*/
 
     async addElements(elements) { //Agrego 1 o varios elementos
         //await this.#setConnection()

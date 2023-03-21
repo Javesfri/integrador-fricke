@@ -23,7 +23,7 @@ else{
 
 export class ManagerMessageMongoDB extends ManagerMongoDB {
     constructor() {
-        super(url, model)
+        super(model)
         //Aqui irian los atributos propios de la clase
     }
     //Aqui irian los metodos propios de la clase
