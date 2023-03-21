@@ -10,6 +10,7 @@ import * as path from "path";
 import {Server} from "socket.io"
 import fs from "fs";
 import { getManagerMessages } from "./dao/daoManager.js";
+import mongoose from "mongoose";
 
 
 const app = express();
@@ -18,6 +19,14 @@ const PORT = 8080;
 const server =app.listen(PORT, () => {
   console.log(`Server on Port ${PORT}`);
 });
+
+
+try {
+  await mongoose.connect("mongodb://javesfri:coderhouse@ac-s7myrez-shard-00-00.9bhthja.mongodb.net:27017,ac-s7myrez-shard-00-01.9bhthja.mongodb.net:27017,ac-s7myrez-shard-00-02.9bhthja.mongodb.net:27017/?ssl=true&replicaSet=atlas-x8xyi0-shard-0&authSource=admin&retryWrites=true&w=majority")
+  console.log("DB is connected")
+} catch (error) {
+  console.log(error) 
+}
 
 //ServerIO
 const io=new Server(server)
@@ -36,9 +45,9 @@ io.on("connection", (socket) =>{ //io.on cuando se establece conexion
   socket.on("message", async (info) =>{
     const data= await getManagerMessages()
     const managerMessage = new data.ManagerMessageMongoDB
-    managerMessage.addElements([info]).then(() =>{
+    managerMessage.addElements(info).then(() =>{
       managerMessage.getElements().then((messages) =>{
-        console.log(messages);
+        console.log(messages[messages.length-1]);
         socket.emit("allMessages", messages)
       })
     })

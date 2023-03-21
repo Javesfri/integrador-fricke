@@ -3,11 +3,9 @@ import mongoose from "mongoose";
 export class ManagerMongoDB {
 
     #url
-    constructor(url, collection, schema) {
+    constructor(url,model) {
         this.#url = url //Atributo privado
-        this.collection = collection
-        this.schema = new mongoose.Schema(schema)
-        this.model = mongoose.model(this.collection, this.schema)
+        this.model = model
     }
     
 
@@ -23,16 +21,17 @@ export class ManagerMongoDB {
     }
 
     async addElements(elements) { //Agrego 1 o varios elementos
-        await this.#setConnection()
+        //await this.#setConnection()
         try {
-            return await this.model.insertMany(elements)
+            console.log(elements)
+            return await this.model.insertMany([elements])
         } catch (error) {
             return error
         }
     }
 
     async getElements() {
-        await this.#setConnection()
+       // await this.#setConnection()
         try {
             return await this.model.find()
         } catch (error) {
@@ -41,7 +40,7 @@ export class ManagerMongoDB {
     }
 
     async getElementById(id) { //Agrego 1 o varios elementos
-        await this.#setConnection()
+        //await this.#setConnection()
         try {
             return await this.model.findById(id)
         } catch (error) {
@@ -50,7 +49,7 @@ export class ManagerMongoDB {
     }
 
     async updateElement(id, info) {
-        await this.#setConnection()
+        //await this.#setConnection()
         try {
             return await this.model.findByIdAndUpdate(id, info)
         } catch (error) {
@@ -59,7 +58,7 @@ export class ManagerMongoDB {
     }
 
     async deleteElement(id) {
-        await this.#setConnection()
+      //  await this.#setConnection()
         try {
             return await this.model.findByIdAndDelete(id)
         } catch (error) {
