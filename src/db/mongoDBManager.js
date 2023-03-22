@@ -23,9 +23,9 @@ export class ManagerMongoDB {
     async addElements(elements) { //Agrego 1 o varios elementos
         //await this.#setConnection()
         try {
-            console.log(elements)
             return await this.model.insertMany([elements])
         } catch (error) {
+            console.log(error) 
             return error
         }
     }

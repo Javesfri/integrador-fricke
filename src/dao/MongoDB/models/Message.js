@@ -12,7 +12,7 @@ else{
         nombre: String,
         email: {
             type: String,
-            unique: true
+            unique: false,
         },
         message: String
     })

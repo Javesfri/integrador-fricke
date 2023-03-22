@@ -47,7 +47,6 @@ io.on("connection", (socket) =>{ //io.on cuando se establece conexion
     const managerMessage = new data.ManagerMessageMongoDB
     managerMessage.addElements(info).then(() =>{
       managerMessage.getElements().then((messages) =>{
-        console.log(messages[messages.length-1]);
         socket.emit("allMessages", messages)
       })
     })
